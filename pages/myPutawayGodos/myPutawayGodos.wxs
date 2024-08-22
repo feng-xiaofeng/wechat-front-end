@@ -1,0 +1,31 @@
+var hidden={
+    subStr:function(val, number) {
+       var reg = getRegExp("<[^>]+>", "g");
+       val = val.replace(reg,'')
+         val = val.replace('/\s+/g','')
+       if (val.length == 0 || val == undefined) {
+           return '';
+           
+           } else if (val.length > number) {
+           return val.slice(0,number) + "...";
+           
+           }else{
+           return val;
+           
+           }
+   },
+   goodsType:function(typeId, goodsType){
+       
+    for (var i = 0; i < goodsType.length; i++){
+       if (goodsType[i].Id == typeId)
+       return goodsType[i].TypeName
+    }
+    
+   }
+   
+   }
+
+   module.exports={
+       subStr:hidden.subStr,
+       goodsType:hidden.goodsType
+   }

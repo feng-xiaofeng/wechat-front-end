@@ -1,0 +1,80 @@
+<!-- 首页 -->
+<!--index.wxml-->
+<wxs src="./index.wxs" module="m1" />
+<view wx:if="{{showSearch}}" class="custom-border">
+    <icon bind:tap="searchKey" class="search-text1" type="search" size="25" color="#999"></icon>
+    <view class="scroll_box">
+        <scroll-view scroll-x="true" class="scroll-view" enhanced="true" show-scrollbar="{{false}}">
+            <view class="select-item" wx:for="{{navigation}}" wx:key="id" bindtap='selShopTc' data-index="{{index}}" style="{{key==index?'color:#030000;':''}}">
+                <view class="select-item-typeName" data-type_id="{{item.Id}}" bindtap="goodsTypeId">{{item.TypeName}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<!-- 瀑布流大概的思路就是，直接定义两列等宽的view，然后两列都加载相同的数据
+  wx:if="{{index%2==1}}" 这里，用if来辨别是奇数还是偶数，两边加载相反的 -->
+<view style="height: {{windowHeight}}px;">
+
+    <scroll-view scroll-y="true" bindscrolltolower="goodsPage" style="height:100%" refresher-enabled="{{refresherEnabled}}" refresher-triggered="{{refresherTriggered}}" bindrefresherrefresh="onRefresh" refresher-background="#f5eeee">
+        <view class="content" bindtouchstart="handletouchstart" bindtouchmove="handletouchmove" bindtouchend="handletouchend1">
+            <view class="left">
+                <block wx:for="{{goods}}" wx:key="index">
+
+                    <template is="{{msg1}}" data="{{item,httpUrl1,loadState,onnectedUserIDs}}" wx:if="{{index%2==0}}"></template>
+                </block>
+            </view>
+            <view class="right">
+                <block wx:for="{{goods}}" wx:key="index">
+                    <template is="{{msg1}}" data="{{item,httpUrl1,loadState,onnectedUserIDs}}" wx:if="{{index%2==1}}"></template>
+                </block>
+            </view>
+        </view>
+
+        <view class="noGoods" wx:if="{{noGoods}}">
+            没有更多商品......
+        </view>
+    </scroll-view>
+</view>
+
+
+
+<template name="1">
+    <view class="item">
+        <view class="li">
+            <view bindtap="skipDetailed" data-id="{{item.Id}}" data-username="{{'1'}}" class="title">
+                <image wx:if="{{item.FirstImage}}" class="pic" lazy-load="true" data-id="{{item.Id}}" src="{{httpUrl1}}{{item.FirstImage}}" mode="widthFix" />
+                <image wx:else="{{!item.FirstImage}}" style="width: 0rpx; height: 0rpx;" src="" mode="" />
+
+                <view class="title-wrap">
+                    {{item.Title}}
+
+                </view>
+                <view class="bottom">
+                    <view class="toux-name">
+                        <image class="toux" lazy-load="true" src="{{httpUrl1}}{{item.User.avatar_url}}"></image>
+                        <text class="name">{{item.User.user_name}}</text>
+                    </view>
+
+                    <view class="love-num">
+                        <text class="love">{{item.Price}}元</text>
+                    </view>
+                </view>
+
+            </view>
+            <view class="bottom-xuexiao">
+                {{item.User.school_name}}
+
+                <view bindchange="goodsTime" class="bottom-shijian" data-doods_time="{{item.AddTime}}">
+                    {{m1.getMax(item.AddTime)}}
+                </view>
+            </view>
+            <block wx:if="{{onnectedUserIDs !== null}}">
+                <view style="margin-top: -25rpx;" wx:if="{{m1.onnectedUserIDs(onnectedUserIDs,item.UserId)}}">
+                <view style="display: inline-block; color: green; font-size: 10px;">●</view>
+                <text style="color: green; font-size: 10px;">在线</text>
+            </view>
+            </block>
+            
+        </view>
+    </view>
+</template>

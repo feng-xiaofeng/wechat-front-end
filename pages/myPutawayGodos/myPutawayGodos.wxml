@@ -1,0 +1,93 @@
+<!--pages/myPutawayGodos/myPutawayGodos.wxml-->
+<!-- 我发布的商品 -->
+<!-- border-bottom: 1rpx solid rgb(108, 117, 117); -->
+<view class="topNavigation" style="background-color: rgb(235, 235, 235);" >
+    <view class="select-item"  wx:for="{{goodsState}}" wx:key="id" bindtap='selShopTc' data-index="{{index}}" style="{{key==index?'color:rgb(187, 17, 25);':''}}"> 
+        <view style="margin-top: 30rpx;" data-checked="{{item.Id}}" bindtap="getGoods">{{item.Name}}</view>
+    </view>
+</view>
+
+<view style="top: 100rpx;" class="content" bindtouchstart="handletouchstart" bindtouchmove="handletouchmove" >
+    <view class="left">
+        <block  wx:for="{{getUserGoods}}" wx:key="index">
+            <template is="1" data="{{httpUrl,item,returnChecked,goodsType}}" wx:if="index"></template>
+        </block>
+    </view>
+</view>   
+
+    
+<template name="1">
+	<view class="li">
+        <view style="width: 200rpx;">
+            <image class="pic"  src="{{httpUrl}}{{item.FirstImage}}" mode="aspectFit"/>
+        </view>
+        
+        <view class="title-wrap"  >
+            <wxs src="./myPutawayGodos.wxs" module="hidden"/>
+            <view class="ListContent">标题：{{hidden.subStr(item.Title, 10)}}</view>
+            
+            <view class="price">
+                ￥{{item.Price}}
+            </view>
+        </view>
+        <view class="models"  >
+            <wxs src="../index/index.wxs" module="m1"/>
+            <view style="display: -webkit-box;  line-height: 30rpx; word-break: break-all;font-size: 25rpx;text-overflow: ellipsis;  margin-top: 0rpx;left: 202rpx; width: 420rpx; height: 108rpx;">
+                <wxs src="./myPutawayGodos.wxs" module="hidden"/>
+            
+              详情：{{hidden.subStr(item.GoodsDetails, 43)}}
+            </view>
+            <view class="top">{{m1.getMax(item.AddTime)}}</view>
+
+            <wxs src="./myPutawayGodos.wxs" module="hidden"/>
+            <view style=" font-size: 25rpx;  margin-top: -24rpx;left: 202rpx; width: 400rpx; height: 35rpx;">
+               
+                类型：{{hidden.goodsType(item.GoodsTypeId, goodsType)}}
+            </view>
+            <view class="right" wx:if="{{item.Checked == 1}}">
+                上架中
+            </view>
+            <view wx:elif="{{item.Checked == 2}}" class="right">
+                待上架
+            </view>
+            <view wx:elif="{{item.Checked == 3}}" class="right">
+                交易中
+            </view>
+            <view wx:elif="{{item.Checked == 4}}"class="right">
+                已完成
+            </view>
+            
+        </view>
+            <view bindtap="soldOut" data-checked="2" data-goods_id="{{item.Id}}" wx:if="{{item.Checked == 1}}" class="handle" style=" background: rgb(160, 236, 247); border-radius: 50rpx;">
+                下架 
+            </view>
+             <view wx:elif="{{item.Checked == 2}}"   style="height: 80rpx; position: relative; left: 2rpx; top: -200rpx; width: 100%; display: flex; box-sizing: border-box; flex-direction: row; justify-content: space-around">
+                <view bindtap="putaway" data-checked="1" data-goods_id="{{item.Id}}" style=" border-radius: 50rpx 0 0 50rpx ;background:chartreuse; margin-top: 15rpx; width: 33%; left: 0; display: flex; justify-content: center; align-items: center;">
+                上架
+                 
+             </view>  
+             <view bindtap="modification" data-goods_id="{{item.Id}}" data-user_id="{{item.UserId}}" style=" background:rgb(142, 201, 83);margin-top: 15rpx; width: 34%; left: 0; display: flex; justify-content: center; align-items: center;">
+                修改
+                 
+             </view>
+             <view bindtap="delete" data-goods_id="{{item.Id}}" data-user_id="{{item.UserId}}" style="border-radius: 0 50rpx 50rpx 0;background:rgb(178, 236, 119);margin-top: 15rpx; width: 33%; left: 0; display: flex; justify-content: center; align-items: center;">
+                删除
+                 
+             </view>
+             </view>
+             <view wx:elif="{{item.Checked == 3}}" style="height: 66rpx;margin-top: 14rpx; position: relative; left: 2rpx; top: -200rpx; width: 100%; display: flex; box-sizing: border-box; flex-direction: row; justify-content: space-around">
+                <view bindtap="cancel" data-checked="1" data-goods_id="{{item.Id}}" style=" width:50%; border-radius: 50rpx 0 0 50rpx;left: 0; display: flex; justify-content: center; align-items: center;background: rgb(15, 224, 137);">
+                取消交易
+                 
+             </view>
+             <view bindtap="accomplish" data-checked="4" data-goods_id="{{item.Id}}" style=" width: 50%;border-radius: 0 50rpx 50rpx 0;left: 0; display: flex; justify-content: center; align-items: center; background: rgb(34, 228, 121);">
+                完成交易
+                 
+             </view>
+             </view>
+             <view wx:elif="{{item.Checked == 4}}" bindtap="delete" data-goods_id="{{item.Id}}" data-user_id="{{item.UserId}}" style="border-radius:50rpx; height: 66rpx;margin-top: 14rpx; position: relative; left: 2rpx; top: -200rpx; width: 100%; display: flex; box-sizing: border-box; flex-direction: row; left: 0; display: flex; justify-content: center; align-items: center; background: rgb(134, 209, 13);">      
+                删除
+             </view>
+
+    </view>
+</template>

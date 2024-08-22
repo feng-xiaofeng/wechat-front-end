@@ -1,0 +1,32 @@
+<!--pages/persInfo/persInfo.wxml-->
+<!-- 个人信息 -->
+<wxs src="./persInfo.wxs" module="m1"/>
+<view  bindtap="userAvatar" style="width: 90%; margin: 0 auto; height: 113rpx; display: block; box-sizing: border-box; position: relative; top: 0rpx; left: 0rpx; border-bottom: 1rpx solid #b6b2af;">
+    <text style="position: relative; left: 0rpx; top: 35rpx">头像：</text>
+    <view style="width: 113rpx; height: 113rpx; display: block; box-sizing: border-box; margin-left: 80%; position: relative; left: 23rpx; top: -43rpx">
+        <image wx:if="{{avatarUrl == avatar}}" src="{{httpUrl}}{{getUser.avatar_url}}" mode="widthFix" style="width: 100rpx; margin-top:  5rpx;border-radius: 10rpx;"/>
+        <image wx:else="{{avatar}}" src="{{getUser.avatar_url}}" mode="widthFix" style="width: 100rpx; margin-top:  5rpx;border-radius: 10rpx;"/>
+    </view>
+</view>
+<view bindtap="userName" style="width: 90%; margin: 0 auto; height: 113rpx; display: block; box-sizing: border-box; position: relative; top: 0rpx; left: 0rpx;border-bottom: 1rpx solid #b6b2af;">
+    <text style="position: relative; left: 0rpx; top: 35rpx">名字：</text>
+    <view style="text-align: right; top: -8rpx; margin: 0 auto; width: 466rpx; height: 42rpx; right: 116rpx; display: block; box-sizing: border-box; position: relative; left: 105rpx">       
+        {{getUser.user_name}}
+    </view>
+    
+</view>
+<view bindtap="modPhone" style="width: 90%; margin: 0 auto; height: 113rpx; display: block; box-sizing: border-box; position: relative; top: 0rpx; left: 0rpx; border-bottom: 1rpx solid #b6b2af;">
+    <text style="position: relative; left: 0rpx; top: 35rpx">手机号码：</text>
+    <view style="text-align: right; top: -8rpx; margin: 0 auto; width: 466rpx; height: 42rpx; right: 116rpx; display: block; box-sizing: border-box; position: relative; left: 105rpx">       
+        {{getUser.user_phone}}
+    </view>
+</view>
+<view bindtap="modSchool" style="width: 90%; margin: 0 auto; height: 113rpx; display: block; box-sizing: border-box; position: relative; top: 0rpx; left: 0rpx;border-bottom: 1rpx solid #b6b2af;">
+    <text style="position: relative; left: 0rpx; top: 35rpx">我的学校：</text>
+    <view style="text-align: right; top: -8rpx; margin: 0 auto; width: 466rpx; height: 42rpx; right: 116rpx; display: block; box-sizing: border-box; position: relative; left: 105rpx">       
+        {{getUser.school_name}}
+    </view>
+</view>
+
+
+

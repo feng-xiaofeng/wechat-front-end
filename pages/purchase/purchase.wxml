@@ -1,0 +1,24 @@
+<!--pages/purchase/purchase.wxml-->
+<!-- 购买 -->
+<text space="nbsp" style="color: brown; font-weight: 400; width: 98%; margin: 0 auto; position: relative; left: 8rpx; top: 12rpx">
+       平台未开放线上交易，请联系卖家进行线下交易。很抱歉给您带来不便，若认为有必要开始线上交易，请联系微信18276028407， 线上交易微信会收取手续费的哦
+</text>
+<view style="width: 98%rpx; margin: 0 auto; height: 196rpx; position: relative; left: 1rpx; top: 76rpx; border-top: 1rpx solid rgb(92, 93, 95); border-bottom: 1rpx solid rgb(92, 93, 95); display: block; box-sizing: border-box">
+    <view style="height: 196rpx; width: 196rpx;">
+        <image src="{{httpUrl}}{{getPurchaseGoods.FirstImage}}" mode="heightFix" style="margin-top: 5rpx;width: 185rpx; height: 185rpx; position: relative; left: 0rpx;  display: inline-block; box-sizing: border-box"/>
+    </view>
+    <view style=" margin-left: 200rpx; height: 50rpx; position: relative; left: 41rpx; top: -168rpx">
+        {{getPurchaseGoods.Title}}77
+    </view>
+    <view style="margin-left: 200rpx; position: relative; top: -127rpx; color: brown; left: 40rpx; width: 278rpx; height: 50rpx; display: block; box-sizing: border-box">
+        {{getPurchaseGoods.Price}}元
+    </view>
+    <view bindtap="contactBuy" data-user_id="{{getPurchaseGoods.UserId}}" style="width: 150rpx; height: 50rpx; display: block; box-sizing: border-box; position: relative; left: 564rpx; top: -176rpx; color: rgb(0, 0, 0)">
+        联系卖家
+    </view>
+</view>
+<view style="width: 98%; margin: 0 auto; height: 236rpx; position: relative; left: 0rpx; margin-top: 70%; display: block; box-sizing: border-box">
+    <button bindtap="accomplish" data-goods_sate="{{2}}" type="primary">完成交易</button>
+    <button bindtap="cancell" data-goods_sate="{{1}}" type="warn" style="position: relative; left: 0rpx; top: 26rpx">取消交易</button>
+</view>
+

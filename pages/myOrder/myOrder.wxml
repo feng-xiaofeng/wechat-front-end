@@ -1,0 +1,132 @@
+<!--pages/myOrder/myOrder.wxml-->
+<!--pages/myPutawayGodos/myPutawayGodos.wxml-->
+<!-- 我的订单 -->
+<!-- border-bottom: 1rpx solid rgb(108, 117, 117); -->
+<view class="topNavigation" style="background-color: rgb(235, 235, 235);">
+    <view class="select-item" wx:for="{{orderStatus}}" wx:key="id" bindtap='selShopTc' data-index="{{index}}" style="{{key==index?'color:rgb(187, 17, 25);':''}}">
+        <view style="margin-top: 30rpx;" data-checked="{{item.Id}}" bindtap="getOrder">{{item.Name}}</view>
+    </view>
+</view>
+<view>
+    <block wx:for="{{getOrderGoods}}" wx:key="index">
+        <template is="1" data="{{httpUrl,item,isShowConfirm}}" wx:if="index"></template>
+    </block>
+</view>
+
+<template name="1">
+    <view style="height: 589rpx; width: 735rpx; margin: 0 auto; margin-top: 20rpx; padding-top: 10rpx; border-radius: 20rpx; background-color: rgb(255, 255, 255); display: block; box-sizing: border-box">
+        <view style=" height: 200rpx; width: 96%; margin:  0 auto; ">
+            <view style="width: 100%;height: 50rpx">
+                <view style="width: 50rpx; height: 50rpx;">
+                    <image src="{{item.User.avatar_url}}" mode="" style="width: 50rpx; height: 50rpx;border-radius: 25rpx;" />
+                </view>
+                <view style="height: 50rpx; width: 504rpx; position: relative; left: 60rpx; top: -49rpx; display: block; box-sizing: border-box">
+                    <wxs src="/pages/myPutawayGodos/myPutawayGodos.wxs" module="hidden" />
+                    {{hidden.subStr(item.User.user_name, 15)}}
+                </view>
+                <view style="width: 147rpx; height: 50rpx; position: relative; left: 554rpx; top: -99rpx; color: crimson; text-align: right; display: block; box-sizing: border-box">
+                    {{item.price}}元
+                </view>
+            </view>
+            <view style="width:100%; height: 140rpx; margin-top: 5rpx;">
+                <view style="width: 140rpx; height: 140rpx;">
+                    <image style="width: 140rpx; height: 140rpx; position: relative; left: 2rpx; top: 2rpx;border-radius: 20rpx;" src="{{httpUrl}}{{item.goods_image}}" mode="aspectFit" />
+                </view>
+                <view style="height: 146rpx; width: 556rpx; position: relative; left: 150rpx; top: -143rpx; display: block; box-sizing: border-box">
+                    <view style="width: 418rpx; height: 110rpx; display: block;word-break: break-all">
+                        <wxs src="/pages/myPutawayGodos/myPutawayGodos.wxs" module="hidden" />
+                        {{hidden.subStr(item.goods_name, 30)}}
+
+                    </view>
+                    <view style="width: 552rpx; height: 26rpx;  font-size: 20rpx; position: relative; left: 0rpx; top: 10rpx; display: block; box-sizing: border-box">
+                        {{item.User.school_name}}
+                        <view style=" width:110rpx; height: 26rpx; margin-left: 430rpx; margin-top: -30rpx; text-align: right;">
+                            <wxs src="/pages/index/index.wxs" module="m1" />
+                            {{m1.getMax(item.add_time)}}
+                        </view>
+                    </view>
+                    <view wx:if="{{item.checked == 1}}" style="width: 129rpx; height: 39rpx; position: relative; left: 425rpx; top: -100rpx; color: crimson; text-align: right; display: block; box-sizing: border-box">
+                        交易中
+                    </view>
+                    <view wx:elif="{{item.checked == 2}}" style="width: 129rpx; height: 39rpx; position: relative; left: 425rpx; top: -100rpx; color: crimson; text-align: right; display: block; box-sizing: border-box">
+                        完成
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style=" width: 96%; height: 50rpx; margin: 0 auto;margin-top: 20rpx;">
+            订单号
+            <view style=" width: 500rpx; height: 50rpx; position: relative; left: 195rpx; top: -44rpx;text-align: right;">
+                {{item.order_number}}
+            </view>
+        </view>
+        <view style=" width: 96%; height: 50rpx; margin: 0 auto;margin-top: 20rpx;">
+            配送
+            <view style=" width: 500rpx; height: 50rpx; position: relative; left: 195rpx; top: -44rpx;text-align: right;">
+                自取
+            </view>
+        </view>
+        <view style=" width: 96%; height: 50rpx; margin: 0 auto;margin-top: 20rpx;">
+            支付方式
+            <view style=" width: 500rpx; height: 50rpx; position: relative; left: 195rpx; top: -44rpx;text-align: right;">
+                线下
+            </view>
+        </view>
+        <view style=" width: 96%; height: 50rpx; margin: 0 auto;margin-top: 20rpx;">
+            订单备注
+            <view style="width: 500rpx; height: 50rpx; position: relative; left: 195rpx; top: -44rpx;text-align: right;">
+                <wxs src="/pages/myPutawayGodos/myPutawayGodos.wxs" module="hidden" />
+                <view bindtap="close" wx:if="{{item.remark}}">{{hidden.subStr(item.remark, 14)}}
+                    <block wx:if="{{isShowConfirm}}">
+                <view class='toast-box'>
+                    <view class='toastbg'></view>
+                    <view class='showToast'>
+
+                        <view class='toast-main'>
+                            <view style=" width: 135rpx; margin: 0 auto;">
+                                订单备注
+                            </view>
+
+                            <view class='toast-input' style="border-radius: 20rpx;">
+                                <textarea value="{{item.remark}}" style="border-radius: 20rpx;text-align: left;" />
+                            </view>
+                        </view>
+                        <view class='toast-button'>
+                            <view class='button1' catchtap='cancel'>
+                                <view>取消</view>
+                            </view>
+                            <view class='button2' catchtap='confirmAcceptance'>
+                                <view>确定</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+                </view>
+
+                <text wx:else="" style="color: rgb(202, 106, 74);">无备注</text>
+
+            </view>
+
+        </view>
+        <view wx:if="{{item.checked == 2}}" style="height: 93rpx;   width: 100%; display: flex; box-sizing: border-box; flex-direction: row; justify-content: space-around; margin-top: -13rpx;">
+            <view bindtap="modification" data-goods_id="{{item.Id}}" data-user_id="{{item.UserId}}" style=" border-radius: 50rpx 0 0 50rpx;background:rgb(142, 201, 83);margin-top: 15rpx; width: 34%; left: 0; display: flex; justify-content: center; align-items: center; width: 50%;">
+                联系
+            </view>
+            <view bindtap="delete" data-order_id="{{item.id}}" data-user_id="{{item.user_id}}" style="border-radius: 0 50rpx 50rpx 0;background:rgb(178, 236, 119);margin-top: 15rpx; width: 33%; left: 0; display: flex; justify-content: center; align-items: center; width: 50%;">
+                删除
+            </view>
+        </view>
+        <view wx:elif="{{item.checked == 1}}" style="height: 80rpx; left: 0rpx; top: 0rpx; width: 100%; display: flex; box-sizing: border-box; flex-direction: row; justify-content: space-around">
+            <view bindtap="modification" data-checked="1" data-order_id="{{item.Id}}" style=" width:50%; border-radius: 50rpx 0 0 50rpx;left: 0; display: flex; justify-content: center; align-items: center;background: rgb(15, 224, 137);">
+                联系
+            </view>
+            <view bindtap="delete" data-order_id="{{item.id}}" data-user_id="{{item.user_id}}" style=" width:50%; left: 0; display: flex; justify-content: center; align-items: center;background: rgb(15, 192, 118);">
+                取消交易
+            </view>
+            <view bindtap="accomplish" data-checked="4" data-goods_id="{{item.Id}}" style=" width: 50%;border-radius: 0 50rpx 50rpx 0;left: 0; display: flex; justify-content: center; align-items: center; background: rgb(34, 228, 121);">
+                完成交易
+            </view>
+        </view>
+    </view>
+</template>

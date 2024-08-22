@@ -1,0 +1,208 @@
+.custom-border {
+    position: relative;
+    z-index: 999;
+    left: 0rpx;
+    background: #fff;
+    height: 90rpx;
+    width: 100%;
+    top: 0;
+}
+
+.custom-border::before {
+    content: "";
+    position: absolute;
+    height: 3rpx;
+    /* background-color: #ddd6d0; */
+    bottom: -3rpx;
+    left: 18rpx;
+    right: 18rpx;
+}
+
+.search-text1 {
+    float: right;
+    margin-right: 10rpx;
+    margin-top: 20rpx;
+    width: 80rpx;
+    height: 55rpx;
+    text-align: center;
+}
+
+.scroll_box {
+    width: 635rpx;
+    height: 80rpx;
+    display: block;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    margin-left: 20rpx;
+    margin: 0 auto;
+
+    padding: 10rpx;
+    /* padding-top: 20rpx; */
+    /* background: rgb(211, 59, 59); */
+    white-space: nowrap;
+}
+
+.scroll_box scroll-view {
+    height: 100%;
+    width: auto;
+    overflow: hidden;
+}
+
+.select-item {
+    padding-right: 25rpx;
+    display: inline-block;
+    font-size: 35rpx;
+    height: 78rpx;
+    white-space: nowrap;
+    font-weight: 500;
+    color: #a3a1a1;
+}
+
+.select-item-typeName {
+    height: 73rpx;
+    display: flex;
+    align-items: center;
+}
+
+/* 瀑布流 */
+page {
+    width: 100%;
+    margin: 0;
+    background-color: #f5eeee;
+}
+
+.content {
+    margin-top: 90rpx;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    margin: 15rpx;
+    overflow: hidden;
+}
+
+.left {
+    width: 360rpx;
+}
+
+.right {
+    width: 360rpx;
+    margin-left: 10rpx;
+}
+
+.noGoods {
+    margin-top: 100rpx;
+    padding-bottom: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.li {
+    margin-bottom: 10rpx;
+    background: #ffffff;
+    border-radius: 10rpx;
+}
+
+.pic {
+    border-radius: 10rpx 10rpx 0rpx 0rpx;
+    width: 360rpx;
+}
+
+.bottom {
+    justify-content: space-between;
+    padding: 0 5rpx;
+    align-items: center;
+    width: 359rpx;
+    height: 62rpx;
+    display: block;
+    box-sizing: border-box
+}
+
+.title-wrap {
+    padding: 5rpx 10rpx 0rpx 10rpx;
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #333;
+}
+
+
+.toux {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 25rpx;
+}
+
+.name {
+    width: 145rpx;
+    font-size: 17rpx;
+    color: rgba(0, 0, 0, 0.884);
+    /* 字体加粗 */
+    font-weight: 600;
+    margin-left: 10rpx;
+}
+
+.toux-name {
+    width: 300rpx;
+    display: flex;
+    align-items: center;
+    margin: 0rpx 0rpx;
+    width: 357rpx;
+    height: 49rpx;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    left: 0rpx;
+    top: 7rpx
+}
+
+.love-num {
+
+    text-align: right;
+    width: 129rpx;
+    height: 49rpx;
+    box-sizing: border-box;
+    position: relative;
+    left: 0rpx;
+    top: 6rpx;
+    display: block;
+    box-sizing: border-box
+}
+
+.love {
+    font-size: 26rpx;
+    color: rgb(243, 9, 9);
+
+    position: relative;
+    left: 227rpx;
+    top: -39rpx
+}
+
+.bottom-xuexiao {
+    margin-left: 4rpx;
+    font-size: 15rpx;
+    color: rgb(136, 129, 129);
+    width: 344rpx;
+    height: 44rpx;
+    margin-top: 10rpx;
+    display: block;
+    box-sizing: border-box
+}
+
+.bottom-shijian {
+    font-size: 18rpx;
+    color: rgb(136, 129, 129);
+    text-align: right;
+    height: 32rpx;
+    left: 230rpx;
+    margin-top: -25rpx;
+}
+
+.love-num {
+    text-align: right;
+    width: 130rpx;
+    height: 50rpx;
+    box-sizing: border-box;
+}

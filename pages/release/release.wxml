@@ -1,0 +1,62 @@
+<!-- 发布商品 -->
+<view>
+    <!-- <view class="custom-navigation-bar" style="height: {{screenHeight}}rpx"></view> -->
+    <view style="position: relative; width: 750rpx;  height: 111rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
+        <text style="position: relative; left: 249rpx; top: 56rpx">请输入商品信息</text>
+    </view>
+    <form bindsubmit="buttonRelease" data-id="{{13}}">
+        <text style="position: relative; left: -5rpx; top: 61rpx">商品名称：</text>
+        <input type="text" maxlength="40" confirm-type="done" value="{{goods_name}}" bindinput="goodsName" style="width: 507rpx; height: 73rpx; display: block; box-sizing: border-box; position: relative; left: 218rpx; top: 0rpx" placeholder="输入名称" />
+        <text style="position: relative; left: -5rpx; top: 50rpx" decode="{{true}}">价 格：</text>
+        <input type="digit" maxlength="5" confirm-type="done" value="{{goods_price}}" bindinput="goodaPrice" style="position: relative; left: 218rpx; top: -12rpx; width: 507rpx; height: 73rpx; display: block; box-sizing: border-box" placeholder="元" />
+        <text style="position: relative; left: -5rpx; top: 38rpx">详细说明：</text>
+        <textarea type="text" value="{{goods_state}}" bindinput="goodsState" show-confirm-bar="true" confirm-type="done" style="position: relative; left: 31rpx; top: 38rpx; width: 704rpx; height: 242rpx; display: block; box-sizing: border-box" placeholder="请输入" placeholder-style="color:blue;" />
+        <view style="position: relative; width: 750rpx; height: 216rpx; left: 30rpx; top: 38rpx; display: block; box-sizing: border-box">
+            <view class="list-msg">
+                <view class="list-msg1" style="position: relative; left: -88rpx; top: 52rpx; width: 300rpx; height: 50rpx; display: block; box-sizing: border-box">
+                    <text style="position: relative; left: 55rpx; top: 0rpx">选择商品类型：</text>
+                </view>
+                <!-- 下拉框 -->
+                <view class="list-msg2" bindtap="bindShowMsg">
+                    <text>{{tihouWay}}</text>
+                    <image style="width: 34rpx; height: 34rpx; display: inline-block; box-sizing: border-box; right: 230rpx; top: 55rpx; position:absolute;" src="/static/image/xiaojiant.jpeg" mode="widthFix" />
+
+                </view>
+                <!-- 下拉框展示的内容 -->
+
+                <view class="select-box" wx:if="{{select}}">
+                    <scroll-view scroll-y class="list-scroll">
+                        <view class="select-one" wx:for="{{getType}}" wx:if="{{item.Id != 3}}" wx:key="id" bindtap="mySelectName" data-name="{{item.TypeName}}" data-id="{{item.Id}}">
+                            {{item.TypeName}}
+                        </view>
+                    </scroll-view>
+                </view>
+
+
+            </view>
+            <view class="shangjia" style="position: relative; left: -100rpx; top: 22rpx; width: 250rpx; height: 74rpx; display: block; box-sizing: border-box">
+                <text style="position: relative; left: -36rpx; top: 16rpx">立即上架：</text>
+                <checkbox style="position: relative; left: -36rpx; top: 13rpx" checked="{{checked}}" bindtap="checkboxTap" />
+            </view>
+
+        </view>
+        <view style="position: relative; width: 198rpx; height: 92rpx; display: block; box-sizing: border-box; left: 30rpx; top: 8rpx">
+        </view>
+
+        <view style="position: relative; width: 100%; border-top: 1rpx solid gray; left: 0rpx; top: 38rpx; display: block; box-sizing: border-box">
+            <view wx:if="{{upload}}">
+                <image wx:for="{{upload}}" wx:key="index" src="{{item}}" data-index="{{index}}" mode="widthFix" style="width: 30%; padding-left: 2.5%; padding-bottom: 2.5%; padding-top: 2.5%; " bindtap="previewTechnician" bindlongpress="deleteTechnician" />
+            </view>
+            <view>
+                <image wx:if="{{upload.length < imgcount}}" bindtap="upload" src="/static/image/QQ截图20230731193543.png" mode="widthFix" style="width: 30%; padding-left: 2.5%; padding-bottom: 2.5%; padding-top: 2.5%; " />
+            </view>
+
+        </view>
+        <view>
+            <button type="primary" form-type="submit" wx:if="{{checked}}" style="position: relative; width: 300rpx; left: 198rpx; top: 68rpx">发布</button>
+            <button type="default" form-type="submit" wx:else="{{checked}}" style="position: relative; width: 300rpx; left: 198rpx; top: 68rpx">保存</button>
+            <button type="warn" bindtap="previewbutton" style="position: relative; width: 300rpx; left: -202rpx; top: -24rpx">取消</button>
+        </view>
+
+    </form>
+</view>

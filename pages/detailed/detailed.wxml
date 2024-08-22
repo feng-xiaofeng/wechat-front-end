@@ -1,0 +1,60 @@
+<!-- 进入商品页面 -->
+<!--pages/detailed/detailed.wxml-->
+<!--pages/index/detailed/detailed.wxml-->
+
+<view>
+    <!-- <swiper style="height:800rpx; margin-bottom: 10rpx;" autoplay circular indicator-dots bindtap="deleteTechnician">   -->
+        <swiper style="min-height: 400px; margin-bottom: 10rpx; {{swiperHeight}}" autoplay circular indicator-dots bindtap="deleteTechnician">
+        <block wx:for="{{goodImage}}" wx:key="index">
+            <swiper-item bindtap="deleteTechnician">
+                <image bindtap="deleteTechnician" bindload="computeImgHeight" src="{{httpUrl1}}{{item.ImgUrl}}" data-src="{{httpUrl1}}{{item.ImgUrl}}" data-url="{{url}}" mode="heightFix" style="height: 100%; margin: auto; " />
+            </swiper-item>
+        </block>
+    </swiper>
+
+</view>
+<view style="width: 95%; margin: auto; border-top: 3rpx solid #1a1816;">
+    <view style="color: rgb(247, 9, 9);margin-top: 20rpx;">
+        ￥{{goods.Price}}
+    </view>
+    <view style="margin-top: 20rpx;">
+        {{goods.Title}}
+    </view>
+    <view style="margin-top: 20rpx;">
+        详细说明：
+        <text style="margin-top: 10rpx;" space="nbsp">
+            {{goods.GoodsDetails}}
+        </text>
+        <view class="kong">
+
+        </view>
+
+    </view>
+
+</view>
+<view class="btns" wx:if="{{goods.UserId!=user_id}}">
+    <view class="btns-di" bindtap="skipDetailed" data-user_id_to="{{goods.UserId}}" style="width: 160rpx; height: 88rpx; display: block; box-sizing: border-box; position: relative; left: 8rpx; top: -29rpx">
+        <image src="/static/image/QQ截图20230123165418.png" style="height: 35rpx; position: relative; left: 24rpx; top: 0rpx" mode="heightFix" />
+        卖家
+    </view>
+    <view bindtap="imgCollect" data-Collect="{{imgCollect1}}" class="btns-di" style="width: 200rpx; height: 88rpx; display: block; box-sizing: border-box; position: relative; left: -23rpx; top: -29rpx">
+        <image wx:if="{{imgCollect1}}" src="/static/image/QQ截图20230123163548.png" style="height: 35rpx; position: relative; left: 22rpx; top: 0rpx" mode="heightFix" />
+        <image wx:else="{{imgCollect1}}" src="/static/image/QQ截图20230123163525.png" style="height: 35rpx; position: relative; left: 22rpx; top: 0rpx" mode="heightFix" />
+
+        收藏
+    </view>
+    <view class="btns-di" style="margin: auto; height: 60rpx; display: block; box-sizing: border-box; position: relative; left: -12rpx; top: -15rpx; width: 200rpx">
+        <view bindtap="putchase" data-goods_id="{{goods.Id}}" data-checked="{{3}}" style="height: 50rpx; background-color: rgb(243, 100, 64); color: rgb(255, 255, 255); border-radius: 10rpx; position: relative; left: 16rpx; top: 4rpx; display: block; box-sizing: border-box; width: 170rpx">
+            <text style="margin: 0 auto; margin-left: 20rpx;"> 立即购买 </text>
+
+        </view>
+
+    </view>
+
+
+</view>
+<view class="btns" wx:else="{{goods.UserId}}">
+    <view class="btns-di" style="width: 716rpx; height: 80rpx; display: flex; justify-content: center; align-items: center; box-sizing: border-box">
+    <text style="color: red;">您发布的商品</text>
+</view>
+</view>

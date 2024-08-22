@@ -1,0 +1,7 @@
+{
+    "usingComponents": {},
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#00ae9d",
+    "goodsPage": "goodsPage",
+    "enablePullDownRefresh":false
+}

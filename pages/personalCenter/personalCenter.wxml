@@ -1,0 +1,66 @@
+<!-- 我的 -->
+<!--pages/personalCenter/personalCenter.wxml-->
+<view style="width: 750rpx; height: 200rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
+    <view class="account">
+        <view class="img">
+            <image wx:if="{{avatarUrl == avatar}}" src="{{httpUrl}}{{getUser.avatar_url}}" style="width: 150rpx; height: 150rpx; border-radius: 75rpx; position: relative; left: 26rpx; top: 0rpx" mode="" />
+            <image wx:else="{{avatar}}" src="{{getUser.avatar_url}}" style="width: 150rpx; height: 150rpx; border-radius: 75rpx; position: relative; left: 26rpx; top: 0rpx" mode="" />
+        </view>
+       
+        <view class="xl" wx:if="{{getUser}}" style="position: relative; left: 31rpx; top: 0rpx">
+            <view class="getWxInfo" bindtap="userName">
+                {{getUser.user_name}}
+            </view>
+        </view>
+        <!-- border: 1rpx solid rgb(108, 117, 117); -->
+        <view class="xl" style="position: relative; left: 31rpx; top: 0rpx ;" >
+            <view class="persInfo" data-user_id="{{getUser.id}}" bindtap="persInfo"  style="position: relative; left: 50rpx; top: 75rpx">
+                个人信息
+            </view>
+        </view>
+    </view>
+    
+</view>  
+<view class="issue" style="position: relative; left: 0rpx; top: 68rpx; border-top: 1rpx solid #1a1816;">
+        
+        <text style="position: relative; left: 26rpx; top: -3rpx">我发布的</text>
+        
+        <view bindtap="myPutawayGoods" data-key="0" data-user_id="{{getUser.id}}" style="position: relative; width: 168rpx; height: 152rpx; display: block; box-sizing: border-box; left: -2rpx; top: -2rpx">
+            <text style="position: relative; left: 51rpx; top: 27rpx">全部</text>
+            <text style="position: relative; left: 12rpx; top: 77rpx">{{number}}</text>
+        </view>
+        <view bindtap="myPutawayGoods" data-key="1" data-user_id="{{getUser.id}}" style="position: relative; width: 168rpx; height: 152rpx; display: block; box-sizing: border-box; left: 186rpx; top: -154rpx">
+            <text style="position: relative; left: 38rpx; top: 27rpx">上架中</text>
+            <text style="position: relative; left: -30rpx; top: 75rpx">{{checkedTrue}}</text>
+        </view>
+        <view bindtap="myPutawayGoods" data-key="2" data-user_id="{{getUser.id}}" style="position: relative; width: 168rpx; height: 152rpx; display: block; box-sizing: border-box; left: 374rpx; top: -306rpx">
+            <text style="position: relative; left: 38rpx; top: 27rpx">待上架</text>
+            <text style="position: relative; left: -30rpx; top: 75rpx">{{checkedFalse}}</text>
+        </view>
+        <view bindtap="myPutawayGoods" data-key="3" data-user_id="{{getUser.id}}" style="position: relative; width: 168rpx; height: 152rpx; display: block; box-sizing: border-box; left: 542rpx; top: -460rpx">
+            <text style="position: relative; left: 38rpx; top: 27rpx">交易中</text>
+            <text style="position: relative; left: -30rpx; top: 75rpx">{{checkedTrading}}</text>
+        </view>
+</view>
+<view class="issue" style="position: relative; left: 0rpx; top: 136rpx;border-top: 1rpx solid #1a1816;">
+        
+        <text style="position: relative; left: 26rpx; top: -3rpx">我的订单</text>
+        <view style="position: relative; width: 251rpx;  height: 153rpx; display: block; box-sizing: border-box; left: 0rpx; top: -3rpx">
+            <text bindtap="myOrder" data-checked="{{0}}" style="position: relative; left: 51rpx; top: 27rpx">全部</text>
+            <text style="position: relative; left: 1rpx; top: 75rpx">{{all}}</text>
+        </view>
+        <view style="position: relative; width: 251rpx;  height: 153rpx; display: block; box-sizing: border-box; left: 250rpx; top: -155rpx">
+            <text bindtap="myOrder" data-checked="{{1}}" style="position: relative; left: 38rpx; top: 27rpx">交易中</text>
+            <text style="position: relative; left: -30rpx; top: 75rpx">{{checked1}}</text>
+        </view>
+        <view style="position: relative; width: 251rpx;  height: 153rpx; display: block; box-sizing: border-box; left: 500rpx; top: -308rpx">
+            <text bindtap="myOrder" data-checked="{{2}}"style="position: relative; left: 45rpx; top: 27rpx">已完成</text>
+            <text style="position: relative; left: -30rpx; top: 75rpx">{{checked2}}</text>
+        </view>
+        
+</view>
+
+<view style="position: relative; width: 750rpx; height: 118rpx; display: block; box-sizing: border-box; left: 0rpx; top: 186rpx">
+        <text style="position: relative; left: 38rpx; top: 34rpx">我的收藏</text>
+</view>
+

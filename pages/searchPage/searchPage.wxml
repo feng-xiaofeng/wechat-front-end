@@ -1,0 +1,29 @@
+<import src="../index/index"/>
+
+<view class="yyy">
+    <view class="search">
+        <form bindsubmit="getsearch">
+            <input confirm-type="search" class="search-ipt" maxlength="30" type="text" value="{{search}}" bindinput="search" placeholder="请输入关键词" bindconfirm="getSearch" />
+            <button form-type="submit" class="search-text" >搜索</button>
+        </form>
+    </view>
+</view>
+<view style="height: {{windowHeight}}px;">
+    <scroll-view scroll-y="true" bindscrolltolower="goodsPage" style="height:100%">
+        <view class="content">
+            <view class="left">
+                <block wx:for="{{goods}}" wx:key="index">
+                    <template is="{{msg1}}" data="{{item,httpUrl1,loadState,onnectedUserIDs}}" wx:if="{{index%2==0}}"></template>
+                </block>
+            </view>
+            <view class="right">
+                <block wx:for="{{goods}}" wx:key="index">
+                    <template is="{{msg1}}" data="{{item,httpUrl1,loadState,onnectedUserIDs}}" wx:if="{{index%2==1}}"></template>
+                </block>
+            </view>
+        </view>
+        <view wx:if="{{noGoods}}" class="noGoods">
+            没有更多商品......
+        </view>
+    </scroll-view>
+</view>

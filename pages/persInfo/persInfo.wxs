@@ -1,0 +1,8 @@
+function my_slice(str,a,b){
+    console.log(str.slice(a,b))
+    return str.slice(a,b);
+  }
+
+module.exports = {
+    my_slice: my_slice,
+};

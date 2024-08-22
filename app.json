@@ -1,0 +1,71 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/detailed/detailed",
+		"pages/contact/contact",
+		"pages/personalCenter/personalCenter",
+		"pages/release/release",
+		"pages/information/information",
+		"pages/persInfo/persInfo",
+		"pages/productList/productList",
+		"pages/modNmae/modName",
+		"pages/modPhone/modPhone",
+		"pages/modSchool/modSchool",
+		"pages/purchase/purchase",
+		"pages/myPutawayGodos/myPutawayGodos",
+		"pages/modification/modification",
+		"pages/myOrder/myOrder",
+		"pages/confirmOrder/confirmOrder",
+        "pages/avatar/avatar",
+        "pages/searchPage/searchPage"
+		
+	],
+	"permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+          },
+          "scope.userInfo": {
+            "desc": "获取你的用户信息"
+          },
+          "scope.writePhotosAlbum": {
+            "desc": "保存照片到相册"
+          },
+          "scope.album": {
+            "desc": "Your description"
+          }
+      },
+	"requiredPrivateInfos": [
+		"choosePoi"
+	],
+	"window": {
+		"navigationBarBackgroundColor": "#2a5caa",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "",
+		"backgroundColor": "#ef5b9c",
+		"backgroundTextStyle": "light",
+		"enablePullDownRefresh": true
+	},
+	"tabBar": {
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/release/release",
+				"text": "发布商品"
+			},
+			{
+				"pagePath": "pages/information/information",
+				"text": "信息"
+			},
+			{
+				"pagePath": "pages/personalCenter/personalCenter",
+				"text": "我的"
+			}
+		]
+	},
+	"miniApp": {
+		"useAuthorizePage": true
+    }
+}

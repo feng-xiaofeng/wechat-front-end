@@ -1,0 +1,24 @@
+<!-- 信息页面 -->
+<!--pages/information/information.wxml-->
+<wxs src="./information.wxs" module="m1"/>
+<view class="vi">
+  <block wx:for="{{msgNotification}}" wx:key="index" bindtap="viewFriendMessage"> 
+    <view class="information" bindtap="skipDetailed" bindlongpress="deleteTechnician" data-user_id="{{item.user_id}}" data-user_id_to="{{item.user_id_to}}">
+      <view class="headPortrait">
+        <image src="{{httpUrl1}}{{item.user_to_img}}" mode="" />
+        <view wx:if="{{item.unreadCount >= 1}}">
+            <view class="unread">{{item.unreadCount}}</view> <!-- 添加未读数量 -->
+        </view>
+        
+      </view>
+      <view class="name-wrapper">
+       
+        <view class="name">{{m1.subStr(item.user_name, 13)}}</view>
+        
+        <view wx:if="{{item.type == 'pm'}}" class="content">{{m1.subStr(item.content, 17)}}</view>
+        <view wx:else="{{item.type}}" class="content">[图片]</view>
+      </view>
+      <view class="time-right"> {{m1.getMax(item.information_time)}}</view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,7 @@
+<!--pages/modNmae/modName.wxml-->
+<!-- 进入修改name -->
+<form bindsubmit="buttonRelease">
+    <input confirm-type="done" value="{{user_name}}" maxlength="12" bindinput="userName"type="text" placeholder="请输入名字" style="border-bottom: 1rpx solid #b6b2af; width: 90%; height: 80rpx; margin: 0 auto; position: relative; left: 0rpx; top: 174rpx"/>
+    <button type="primary" form-type="submit" style="position: relative; width: 300rpx; left: 0rpx; margin-top: 90%">保存</button>
+</form>
+

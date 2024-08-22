@@ -1,0 +1,12 @@
+<!--pages/modSchool/modSchool.wxml-->
+<view class="section">
+  <form bindsubmit="userSavaSchool">
+        <picker  bindchange="bindPickerChange" value="{{schoolIndex}}"  range="{{schoolName}}" data-scoolName="{{schoolName}}" style="border-bottom: 1rpx solid #b6b2af; position: relative;top: 218rpx; width: 90%; height: 84rpx; display: block; box-sizing: border-box; margin:0 auto">
+    <view style="position: relative; left: 0rpx; top: 21rpx">
+        当前选择：{{schoolName[schoolIndex]}}{{selectSchool}}
+    </view>  
+  </picker>  
+  <button type="primary" form-type="submit" style="position: relative; width: 300rpx; left: 0rpx; margin-top: 90%">保存</button>
+  </form>
+  
+</view>

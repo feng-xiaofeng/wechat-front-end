@@ -1,0 +1,39 @@
+{
+    "compileType": "miniprogram",
+    "setting": {
+        "coverView": true,
+        "es6": false,
+        "postcss": false,
+        "minified": true,
+        "enhance": false,
+        "showShadowRootInWxmlPanel": true,
+        "packNpmRelationList": [],
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "condition": true,
+        "ignoreUploadUnusedFiles": true
+    },
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
+    },
+    "condition": {},
+    "testRoot": "minitest/",
+    "simulatorPluginLibVersion": {
+        "wxext14566970e7e9f62": "2.27.3"
+    },
+    "packOptions": {
+        "ignore": [
+            {
+                "value": "/minitest",
+                "type": "folder"
+            }
+        ],
+        "include": []
+    },
+    "appid": "wx610de42248ffb16c",
+    "projectArchitecture": "multiPlatform"
+}

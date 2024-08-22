@@ -1,0 +1,88 @@
+var arr = [];
+
+function push(element) {
+  arr[arr.length] = element;
+  return arr;
+}
+var m1 = {
+    
+    getMax: function (time1) {
+        var time1 =  Math.round(time1)
+        var time2 = Math.round(getDate().getTime() / 1000)
+        var today = Math.round(getDate().setHours(0, 0, 0, 0) / 1000);
+        var timetooday =  Math.round((today - 3600*24));//昨天零点时间
+        var newDate =  getDate(time1 * 1000).toDateString();//获取的后台发来的服务器今天时
+        var dateDiff = time2 - time1; //时间差的毫秒数
+        var timesString = '';
+        if (getDate(time2 * 1000).toDateString() === newDate) {
+            // 如果是今天的时间戳，则显示小时和分钟
+            var date = getDate(time1 * 1000);
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var minutesString = minutes < 10 ? '0' + minutes : minutes.toString();
+            timesString = hours + ':' + minutesString;
+        } else if (today >time1 && time1>timetooday) {
+            var date = getDate(time1 * 1000);
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var minutesString = minutes < 10 ? '0' + minutes : minutes.toString();
+            timesString = '昨天' + hours + ':' + minutesString;
+        } else if (dateDiff < 24 * 3600 * 365) {
+            // 如果是大于两天，但不超过一年的时间戳，则显示月日的时间
+            var date = getDate(time1 * 1000);
+                
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            timesString = month + '月' + day+ '日';
+        } else {
+            // 如果时间戳过去一年了，则显示年月日的时间
+            var date = getDate(time1 * 1000);
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            timesString = year + '年' + month + '月' + day + '日';
+        }
+
+        return timesString;
+    },
+    subStr:function(val, number) {
+        var reg = getRegExp("<[^>]+>", "g");
+        val = val.replace(reg,'')
+          val = val.replace('/\s+/g','')
+        if (val.length == 0 || val == undefined) {
+            return '';
+            
+            } else if (val.length > number) {
+            return val.slice(0,number) + "...";
+            
+            }else{
+            return val;
+            
+            }
+    },
+    subStr:function(val, number) {
+        var reg = getRegExp("<[^>]+>", "g");
+        val = val.replace(reg,'')
+          val = val.replace('/\s+/g','')
+        if (val.length == 0 || val == undefined) {
+            return '';
+            
+            } else if (val.length > number) {
+            return val.slice(0,number) + "...";
+            
+            }else{
+            return val;
+            
+            }
+    },
+    message:function (messageList,addMessageList) {
+        console.log("messageList",messageList)
+        return messageList.push(addMessageList)
+    }
+};
+
+module.exports = {
+    getMax: m1.getMax,
+    subStr:m1.subStr,
+    message:m1.message,
+};

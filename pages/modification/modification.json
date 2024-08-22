@@ -1,0 +1,6 @@
+{
+    "usingComponents": {},
+    "navigationBarTitleText": "商品上架",
+    "navigationBarBackgroundColor": "#00ae9d",
+    "enablePullDownRefresh":false
+}

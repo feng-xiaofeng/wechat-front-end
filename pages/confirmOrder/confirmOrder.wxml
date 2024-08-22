@@ -1,0 +1,96 @@
+<!--pages/confirmOrder/confirmOrder.wxml-->
+<!-- 确认订单 -->
+<view>
+    <view style="height: 420rpx; width: 750rpx; margin: 0 auto; margin-top: 20rpx; padding-top: 10rpx;border-radius: 20rpx; background-color: rgb(255, 255, 255); display: block; box-sizing: border-box">
+    <view style=" height: 200rpx; width: 96%; margin:  0 auto; ">
+        <view style="width: 100%;height: 50rpx;">
+            <view style="width: 50rpx; height: 50rpx;">
+                <image src="{{goods.User.avatar_url}}"  mode="" style="width: 50rpx; height: 50rpx;border-radius: 25rpx;"/>
+            </view>
+            <view style="height: 50rpx; width: 634rpx;  position: relative; left: 68rpx; top: -45rpx; display: block; box-sizing: border-box">
+                {{goods.User.user_name}}
+            </view>
+        </view>
+        <view style="width:100%; height: 140rpx; margin-top: 5rpx;">
+            <view style="width: 140rpx; height: 140rpx;">
+                <image style="width: 140rpx; height: 140rpx; position: relative; left: 2rpx; top: 2rpx;border-radius: 20rpx;" src="{{httpUrl}}{{goods.FirstImage}}" mode="aspectFit"/>
+            </view>
+            <view style="height: 146rpx; width: 556rpx; position: relative; left: 150rpx; top: -143rpx; display: block; box-sizing: border-box">
+                <view style="width: 418rpx; height: 110rpx; display: block;word-break: break-all">
+                    {{goods.Title}}
+                </view>
+                <view  style="width: 552rpx; height: 26rpx;  font-size: 20rpx; position: relative; left: 0rpx; top: 10rpx; display: block; box-sizing: border-box">
+                    {{goods.User.school_name}}
+                </view>
+                <view style="width: 129rpx; height: 39rpx; position: relative; left: 431rpx; top: -100rpx; color: crimson; text-align: right; display: block; box-sizing: border-box">
+                    {{goods.Price}}元
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style=" width: 96%; height: 50rpx; margin: 0 auto;margin-top: 20rpx;">
+        配送 
+        <view style=" width: 500rpx; height: 50rpx; position: relative; left: 195rpx; top: -44rpx;text-align: right;">
+            自取
+        </view>
+    </view>
+    <view style=" width: 96%; height: 50rpx; margin: 0 auto;margin-top: 20rpx;">
+    支付方式
+    <view style=" width: 500rpx; height: 50rpx; position: relative; left: 195rpx; top: -44rpx;text-align: right;">
+            线下
+        </view>
+    </view>
+    <view style=" width: 96%; height: 50rpx; margin: 0 auto;margin-top: 20rpx;">
+        订单备注
+        <view bindtap="close" style="width: 500rpx; height: 50rpx; position: relative; left: 195rpx; top: -44rpx;text-align: right;">
+        <wxs src="/pages/myPutawayGodos/myPutawayGodos.wxs" module="hidden"/>
+        <text wx:if="{{orderNote}}">{{hidden.subStr(orderNote, 14)}}</text>
+        <text wx:else="{{orderNote}}" style="color: rgb(202, 106, 74);">无备注</text>
+            
+        </view>
+        <block wx:if="{{isShowConfirm}}">
+      <view class='toast-box'>
+        <view class='toastbg'></view>
+        <view class='showToast'>
+           
+            <view class='toast-main'>
+            <view style=" width: 135rpx; margin: 0 auto;">
+                订单备注
+            </view>
+             
+                <view class='toast-input' style="border-radius: 20rpx;">
+                    <textarea maxlength="100" bindinput='setValue' placeholder="请先与商家协调一致" value="{{orderNote}}" style="border-radius: 20rpx;"/>
+                </view>
+            </view>
+            <view class='toast-button'>
+                <view class='button1' catchtap='cancel'>
+                    <view >取消</view>
+                </view> 
+                 <view class='button2' catchtap='confirmAcceptance'>
+                    <view  >确定</view>
+                </view>
+            </view>
+        </view>
+    </view>
+  </block>
+    </view>
+    
+</view>
+<view style="width: 100%; height: 100rpx; background-color: rgb(255, 255, 255); bottom: 0rpx;position: fixed;">
+    <view style="width: 50%; height: 100rpx; display: flex; box-sizing: border-box; flex-direction: row; justify-content: space-around; bottom: 0px; ">
+        
+        <view style="margin-top: 20rpx;">
+            合计：<text style="color: rgb(255, 0, 21);">￥4567545</text>
+        </view>
+    </view>
+    <view style="width: 50%; height: 100rpx; margin-left: 400rpx; margin-top: -98rpx; display: flex; box-sizing: border-box; flex-direction: row; justify-content: space-around; position: relative; left: -24rpx; top: 0rpx">
+        <view bindtap="submitOrder" data-checked="{{3}}" data-school_name="{{goods.User.school_name}}" data-seller_id="{{goods.User.id}}" data-price="{{goods.Price}}" data-goods_name="{{goods.Title}}" data-goods_image="{{goods.FirstImage}}" data-goods_id="{{goods.Id}}" style="height: 70rpx; width: 200rpx; margin-top: 15rpx;display: flex; box-sizing: border-box; flex-direction: row; justify-content: space-around;border-radius: 50rpx; background-color: rgb(236, 86, 49);">
+        <text style="margin-top: 10rpx; color: rgb(255, 255, 255);"> 提交订单</text>
+           
+        </view>
+        
+    </view>
+</view>
+    
+
+</view>

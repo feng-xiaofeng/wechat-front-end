@@ -1,0 +1,47 @@
+/* pages/index/detailed/detailed.wxss */
+image{
+    width: 750rpx; 
+    display: flex; 
+    justify-content: center;/*水平居中*/        
+ align-items:center;  /*垂直居中*/
+}
+
+.btns{
+    border-top: 1rpx solid rgba(95, 88, 88, 0.767);
+    position: fixed;
+    bottom: 0px;
+    z-index: 1;
+    width: 100%;
+    background: #ffffff;
+    height: 120rpx;
+    display: flex;
+    /* 水平方向排列 row规定主轴的方向从左到右（row-reverse相反）column从上到下*/
+    flex-direction: row;
+    /* 元素在主轴方向如何排列flex-start/center/spade-around/ */
+    /* justify-content: space-around; */
+    justify-content: flex-start;
+}
+
+.btns .btns-di{
+    margin: 0 auto;
+    /* 水平方向排列 row规定主轴的方向从左到右（row-reverse相反）column从上到下*/
+    flex-direction: column;
+    margin-top: 30rpx;
+    margin-left: 60rpx;
+    width: 250rpx;
+    
+}
+.btns .btns-di .brns-goumai{
+    width: 150rpx;
+    background-color: rgb(189, 33, 33);
+   
+}
+ 
+.resetbtn{
+    width: 45% !important;
+    float: right; 
+    background-color: palevioletred;
+}
+.kong{
+    height: 300rpx;
+}

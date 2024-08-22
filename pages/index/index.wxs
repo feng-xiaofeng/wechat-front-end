@@ -1,0 +1,43 @@
+var m1 = {
+    getMax: function (time1) {
+        var time2 = Math.round(getDate().getTime() / 1000)
+
+        var dateDiff = time2 - time1; //时间差的毫秒数
+        var yearDiff = Math.floor(dateDiff / (24 * 3600 * 365));
+        var dayDiff = Math.floor(dateDiff / (24 * 3600)); //计算出相差天数
+        var leave1 = dateDiff % (24 * 3600) //计算天数后剩余的毫秒数
+        var hours = Math.floor(leave1 / (3600)) //计算出小时数
+        //计算相差分钟数
+        var leave2 = leave1 % (3600) //计算小时数后剩余的毫秒数
+        var minutes = Math.floor(leave2 / (60)) //计算相差分钟数
+        //计算相差秒数
+        var leave3 = leave2 % (60) //计算分钟数后剩余的毫秒数
+        var seconds = Math.round(leave3);
+        var timesString = '';
+        if (yearDiff != 0) {
+            timesString = yearDiff + '年前';
+        } else if (yearDiff == 0 && dayDiff != 0) {
+            timesString = dayDiff + '天前';
+        } else if (dayDiff == 0 && hours != 0) {
+            timesString = hours + '小时前';
+        } else if (hours == 0 && minutes != 0) {
+            timesString = minutes + '分钟前';
+        } else if (minutes == 0 && seconds < 60) {
+            timesString = '刚刚';
+        }
+        return timesString
+    },
+    onnectedUserIDs: function (id_string, user_id) {
+        for (var i = 0; i < id_string.length; i++) {
+            if (parseInt(id_string[i]) === parseInt(user_id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+module.exports = {
+    getMax: m1.getMax,
+    onnectedUserIDs: m1.onnectedUserIDs,
+}

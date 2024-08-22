@@ -1,0 +1,85 @@
+.vi .information {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 110rpx;
+    border: 3rpx solid #ebe7e2;
+    background-color: #ffffff;
+    padding: 10rpx;
+  }
+  
+  .headPortrait {
+    position: relative;
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 10rpx;
+    overflow: visible; /* 将属性修改为 visible */
+  }
+  
+  .headPortrait image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10rpx;
+  }
+  
+  .vi .information .name-wrapper {
+      
+    flex: 1;
+    padding-left: 10rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 120rpx;
+  }
+  
+  .vi .information .time {
+      
+    color: #636060;
+    font-size: 30rpx;
+    margin-top: 10rpx;
+    align-self: flex-end;
+  }
+  
+  .vi .information .time-right {
+      
+    color: #636060;
+    font-size: 20rpx;
+    margin-top: 10rpx;
+    margin-left: auto;
+  }
+  
+  .vi .information .name {
+      
+    color: #333333;
+    font-size: 30rpx;
+    font-weight: bold;
+    margin-bottom: 5px; /* 添加底部间距 */
+  }
+  
+  .vi .information .content {
+      
+    color: #707070;
+    font-size: 25rpx;
+    margin-top: 10rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .headPortrait .unread {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30rpx;
+    height: 30rpx;
+    background-color: red;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 24rpx;
+    z-index: 1; /* 添加 z-index 属性 */
+  }
